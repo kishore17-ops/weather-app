@@ -1,27 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Weather App</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skyline — Weather, at a glance</title>
+<meta name="description" content="A clean, fast weather lookup with live conditions, feels-like, wind, and sun times.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="card">
-        <h1>🌤 Weather App</h1>
+  <main class="card" id="card">
+    <div class="skybar" id="skybar" aria-hidden="true"></div>
 
-        <h3 id="greeting"></h3>
+    <header class="head">
+      <div class="brand">
+        <span class="brand-mark" id="brandIcon" aria-hidden="true"></span>
+        <span class="brand-name">Skyline</span>
+      </div>
+      <p class="greeting" id="greeting"></p>
+    </header>
 
-        <input type="text" id="city" placeholder="Enter City Name">
+    <form class="search" id="searchForm" autocomplete="off">
+      <div class="search-row">
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="Search a city…"
+          aria-label="City name"
+          required
+        >
+        <button type="button" class="icon-btn" id="locateBtn" title="Use my location" aria-label="Use my current location">
+          <svg viewBox="0 0 24 24" width="18" height="18"><path d="M12 2v2.06A8.01 8.01 0 0 0 4.06 12H2v2h2.06A8.01 8.01 0 0 0 12 21.94V22h2v-2.06A8.01 8.01 0 0 0 21.94 14H24v-2h-2.06A8.01 8.01 0 0 0 14 4.06V2h-2zm1 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill="currentColor"/></svg>
+        </button>
+      </div>
+      <button type="submit" class="go-btn" id="goBtn">
+        <span class="btn-label">Get weather</span>
+        <span class="spinner" id="spinner" hidden></span>
+      </button>
+    </form>
 
-        <button onclick="getWeather()">Get Weather</button>
+    <div class="chips" id="recentChips" aria-label="Recent searches"></div>
 
-        <div id="result"></div>
+    <div id="result" class="result" role="status" aria-live="polite"></div>
 
-        <p class="footer">
-Developed by Kishore | AI & DS
-</p>
-    </div>
+    <p class="footer">Developed by Kishore · AI &amp; DS <span class="dot">•</span> data via OpenWeather</p>
+  </main>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
